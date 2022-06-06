@@ -1,4 +1,3 @@
-
 #define TINY_GSM_MODEM_SIM800
 
 
@@ -10,8 +9,8 @@
 
 
 
-const char FIREBASE_HOST[]  = "ENTER_FIREBASE_HOST";
-const String FIREBASE_AUTH  = "ENTER_FIREBASE_AUTH";
+const char FIREBASE_HOST[]  = "/";
+const String FIREBASE_AUTH  = "/";
 const String FIREBASE_PATH  = "/";
 const int SSL_PORT          = 443;
 
