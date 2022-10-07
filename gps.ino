@@ -1,179 +1,103 @@
-#define TINY_GSM_MODEM_SIM800
+#include <WiFi.h>
+#include <FirebaseESP32.h>
+#include <TinyGPS++.h>
 
+#define FIREBASE_HOST "gps-b123c-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "gEjXkGOWaMEzkZKpKIYqwFH7dQMetih25gsmligT"
+#define WIFI_SSID "LAZI 5G"
+#define WIFI_PASSWORD "fmrp1530"
+FirebaseData firebaseData;
 
-#define TINY_GSM_RX_BUFFER 256
-
-#include <TinyGPS++.h> 
-#include <TinyGsmClient.h> 
-#include <ArduinoHttpClient.h> 
-
-
-
-const char FIREBASE_HOST[]  = "/";
-const String FIREBASE_AUTH  = "/";
-const String FIREBASE_PATH  = "/";
-const int SSL_PORT          = 443;
-
-
-
-char apn[]  = "internet";
-char user[] = "";
-char pass[] = "";
-
-
-
-#define rxPin 4
-#define txPin 2
-HardwareSerial sim800(1);
-TinyGsm modem(sim800);
-
-
-
-#define RXD2 16
-#define TXD2 17
-HardwareSerial neogps(2);
+#define RXD2 5
+#define TXD2 21
+HardwareSerial neogps(1);
+String ESP32_API_KEY = "Ad5F10jkBM0";
 TinyGPSPlus gps;
-
-
-
-TinyGsmClientSecure gsm_client_secure_modem(modem, 0);
-HttpClient http_client = HttpClient(gsm_client_secure_modem, FIREBASE_HOST, SSL_PORT);
-
-
-unsigned long previousMillis = 0;
-long interval = 10000;
-
-
-void setup() {
-  Serial.begin(115200);
-  Serial.println("esp32 serial initialize");
+void setup(){
   
-  sim800.begin(9600, SERIAL_8N1, rxPin, txPin);
-  Serial.println("SIM800L serial initialize");
-
+  Initialization();
+  WiFiConnection();
   neogps.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  Serial.println("neogps serial initialize");
-  delay(3000);
   
+ }
+
+float counter2 = 0.5;
+
+void Initialization(){
   
-  Serial.println("Initializing modem...");
-  modem.restart();
-  String modemInfo = modem.getModemInfo();
-  Serial.print("Modem: ");
-  Serial.println(modemInfo);
- 
-  
-  http_client.setHttpResponseTimeout(90 * 1000); 
+  Serial.begin(115200); 
+ }
+
+void WiFiConnection(){
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to Wi-Fi");
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print(".");
+    delay(300);
+  }
+  Serial.println();
+  Serial.print("Connected with IP: ");
+  Serial.println(WiFi.localIP());
+  Serial.println();
+
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  Firebase.reconnectWiFi(true);
 }
 
-
-
-
-void loop() {
-  
-  Serial.print(F("Connecting to "));
-  Serial.print(apn);
-  if (!modem.gprsConnect(apn, user, pass)) {
-    Serial.println(" fail");
-    delay(1000);
-    return;
-  }
-  Serial.println(" OK");
-  
-  
-  http_client.connect(FIREBASE_HOST, SSL_PORT);
-  
-  
-  while (true) {
-    if (!http_client.connected()) {
-      Serial.println();
-      http_client.stop();// Shutdown
-      Serial.println("HTTP  not connect");
-      break;
-    }
-    else{
-      gps_loop();
-    }
-  }
-  
-}
-
-void PostToFirebase(const char* method, const String & path , const String & data, HttpClient* http) {
-  String response;
-  int statusCode = 0;
-  http->connectionKeepAlive(); 
-  
-  
-  String url;
-  if (path[0] != '/') {
-    url = "/";
-  }
-  url += path + ".json";
-  url += "?auth=" + FIREBASE_AUTH;
-  Serial.print("POST:");
-  Serial.println(url);
-  Serial.print("Data:");
-  Serial.println(data);
-  
-  
-  String contentType = "application/json";
-  http->put(url, contentType, data);
-  
-  
-  statusCode = http->responseStatusCode();
-  Serial.print("Status code: ");
-  Serial.println(statusCode);
-  response = http->responseBody();
-  Serial.print("Response: ");
-  Serial.println(response);
-  
-  if (!http->connected()) {
-    Serial.println();
-    http->stop();// Shutdown
-    Serial.println("HTTP POST disconnected");
-  }
-  
-}
-
-void gps_loop()
-{
- 
+void loop(){
   boolean newData = false;
   for (unsigned long start = millis(); millis() - start < 2000;){
-    while (neogps.available()){
-      if (gps.encode(neogps.read())){
-        newData = true;
-        break;
+    while(neogps.available()){
+      if(gps.encode(neogps.read())){
+        if(gps.location.isValid() == 1){
+          newData = true;
+          break;
+        }
       }
     }
   }
-
+  //NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+  
+  //MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  //If newData is true
   if(true){
-  newData = false;
+    newData = false;
   
-  String latitude, longitude;
-  
-  
-  latitude = String(gps.location.lat(), 6); 
-  longitude = String(gps.location.lng(), 6); 
-  
-  
-  
-  Serial.print("Latitude= "); 
-  Serial.print(latitude);
-  Serial.print(" Longitude= "); 
-  Serial.println(longitude);
-      
-  String gpsData = "{";
-  gpsData += "\"lat\":" + latitude + ",";
-  gpsData += "\"lng\":" + longitude + "";
-  gpsData += "}";
+    //NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    String latitude, longitude;
+    //float altitude;
+    //unsigned long date, time, speed, satellites;
+    
+    latitude = String(gps.location.lat(), 6); // Latitude in degrees (double)
+    longitude = String(gps.location.lng(), 6); // Longitude in degrees (double)
+    
+    //altitude = gps.altitude.meters(); // Altitude in meters (double)
+    //date = gps.date.value(); // Raw date in DDMMYY format (u32)
+    //time = gps.time.value(); // Raw time in HHMMSSCC format (u32)
+    //speed = gps.speed.kmph();
+    
+    //Serial.print("Latitude= "); 
+    //Serial.print(latitude);
+    //Serial.print(" Longitude= "); 
+    //Serial.println(longitude);
+    String gps_data;
+    gps_data = "api_key="+ESP32_API_KEY;
+    gps_data += "&lat="+latitude;
+    gps_data += "&lng="+longitude;
 
-  
-  
-  PostToFirebase("PATCH", FIREBASE_PATH, gpsData, &http_client);
-  
-
+    Serial.print("gps_data: ");
+    Serial.println(gps_data);
+    
+    String x = gps_data;
+    
+  if(Firebase.setString(firebaseData, "location", x)){
+    }
+    if(Firebase.getString(firebaseData, "location")){
+    if(firebaseData.dataType() == "string"){
+      Serial.print("data = ");
+      Serial.println(firebaseData.stringData());
+    }
   }
-  
+}
 }
