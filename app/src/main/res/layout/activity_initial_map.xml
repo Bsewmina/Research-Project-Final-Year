@@ -107,7 +107,7 @@
         android:completionHint="Select a city"
         android:background="#FFFFFF"
 
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/findbus"
         app:layout_constraintStart_toStartOf="parent" />
 
 
