@@ -44,7 +44,6 @@ public class InitialMap extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_initial_map);
 
-
         //Assign variable
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()

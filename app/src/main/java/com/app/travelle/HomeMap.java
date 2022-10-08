@@ -32,7 +32,6 @@ public class HomeMap extends FragmentActivity implements OnMapReadyCallback {
         binding = ActivityHomeMapBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

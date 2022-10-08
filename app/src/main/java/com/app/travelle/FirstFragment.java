@@ -11,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.app.travelle.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-
 private FragmentFirstBinding binding;
 
     @Override
