@@ -13,6 +13,7 @@ class PathPlanner():
         self.goal = goal
         self.type = type
         self.range = 0
+        self.cost = 0
         self.closedSet = self.create_closedSet() if goal != None and start != None else None
         self.openSet = self.create_openSet() if goal != None and start != None else None
         self.cameFrom = self.create_cameFrom() if goal != None and start != None else None
@@ -221,31 +222,38 @@ class PathPlanner():
         return self.range
 
     def get_fare(self,path):
-        cost = 0
+        
         currentRouteNo = self.map.routeNo[self.start]
 
         temp = 0
         for x in path:
             if self.map.routeNo[x] == currentRouteNo:
-                print('path is(x) =' + str(x)+ ' ,temp =' + str(temp) + ' ,cost =' + str(cost))
+                #print('path is(x) =' + str(x)+ ' ,temp =' + str(temp))
                 temp+=1 
-            else:
-                if(currentRouteNo == 177):
-                    cost = cost + route_177.get(temp)
-                    temp = 0
-                    currentRouteNo = self.map.routeNo[x]
-                elif(currentRouteNo == 176):
-                    cost = cost + route_176.get(temp)
-                    temp = 0
-                    currentRouteNo = self.map.routeNo[x]
-                elif(currentRouteNo == 8717):
-                    cost = cost + route_8717.get(temp)
-                    temp = 0
-                    currentRouteNo = self.map.routeNo[x]
-                else:
-                    temp = 0
-        cost = cost + route_177.get(temp)
-        return cost
+                currentRouteNo = self.map.routeNo[x]
+            else :
+                print("eeeeeeeeeeeeeeeeeeee")
+                self.func(currentRouteNo, temp)
+                currentRouteNo = self.map.routeNo[x]
+                temp = 0
+        
+        print('cost = ', self.cost)
+                
+        #cost = cost + route_177.get(temp)
+        return self.cost
+
+    def func(self, no, nodes):
+        print('fuction')
+        if(no == 177):
+            self.cost = self.cost + route_177.get(nodes)
+        elif(no == 176):
+            self.cost = self.cost + route_176.get(nodes)
+        elif(no == 8717):
+            self.cost = self.cost + route_8717.get(nodes)
+        else:
+            pass
+
+
 
 # Get route  
 def main( a, start, destination):
@@ -268,7 +276,7 @@ def main( a, start, destination):
     else: 
         print(path)
         print('distance =' , planner.get_traveled_distance())
-        #print(planner.get_fare(path))
+        print(planner.get_fare(path))
 
         
 
