@@ -1,18 +1,18 @@
-from helpers import load_map_test, load_map_bus, load_map_train,route_177
+from tokenize import ContStr
+from turtle import distance
+from helpers import load_map_test, load_map_bus, load_map_train,route_177,route_176,route_8717
 import math
 
-val = 0
-
 class PathPlanner():
-    
+   
+
     def __init__(self, M, start=None, goal=None, type=None):
         
         self.map = M
         self.start= start
         self.goal = goal
         self.type = type
-        self.dis = 0
-
+        self.range = 0
         self.closedSet = self.create_closedSet() if goal != None and start != None else None
         self.openSet = self.create_openSet() if goal != None and start != None else None
         self.cameFrom = self.create_cameFrom() if goal != None and start != None else None
@@ -73,9 +73,10 @@ class PathPlanner():
 
 
                 # This path is the best until now. Record it!
-                global val  #
-                val = val + self.dis
+                
                 self.record_best_path_to(current, neighbor)
+                #self.range += self.dis
+
         print("No Path Found")
         self.path = None
         return False
@@ -149,10 +150,6 @@ class PathPlanner():
         """Returns the neighbors of a node"""
         return set(self.map.roads[node]) 
 
-    def get_traveled_distance(self):
-        #traveled_distance 
-        return self.dis
-
     #-------------------------------- Calculations --------------------------------#
 
     def get_gScore(self, node):
@@ -210,12 +207,48 @@ class PathPlanner():
         # calculate the result
         dist = (c * r)
         #print (dist)
-        self.dis = dist
+        #self.dis = dist
         return dist
 
+    def get_traveled_distance(self):
+
+        #traveled_distance 
+        lastNode = self.start
+        for n in self.path[1:]:
+            self.range = self.range+ distance(lastNode, n )
+            lastNode = n   
+
+        return self.range
+
+    def get_fare(self,path):
+        cost = 0
+        currentRouteNo = self.map.routeNo[self.start]
+
+        temp = 0
+        for x in path:
+            if self.map.routeNo[x] == currentRouteNo:
+                print('path is(x) =' + str(x)+ ' ,temp =' + str(temp) + ' ,cost =' + str(cost))
+                temp+=1 
+            else:
+                if(currentRouteNo == 177):
+                    cost = cost + route_177.get(temp)
+                    temp = 0
+                    currentRouteNo = self.map.routeNo[x]
+                elif(currentRouteNo == 176):
+                    cost = cost + route_176.get(temp)
+                    temp = 0
+                    currentRouteNo = self.map.routeNo[x]
+                elif(currentRouteNo == 8717):
+                    cost = cost + route_8717.get(temp)
+                    temp = 0
+                    currentRouteNo = self.map.routeNo[x]
+                else:
+                    temp = 0
+        cost = cost + route_177.get(temp)
+        return cost
 
 # Get route  
-def main( a, node1, node2):
+def main( a, start, destination):
     if a == 3:
         map = load_map_train()
     elif a == 2:
@@ -223,25 +256,25 @@ def main( a, node1, node2):
     else:
         map = load_map_test()
     
-    planner = PathPlanner(map,node1,node2)
+    planner = PathPlanner(map,start,destination)
     print(map.roads)
 
     path = planner.path
-    print('distance =' ,val)
-    if path == [5, 16, 37, 12, 34]:
-        print("code works for test path!!!")
+    
+    print("Genarated path")
+    if path == False:
+        print("No path Found", path)
+        return
+    else: 
         print(path)
-    else:
-        print("Genarated path")
+        print('distance =' , planner.get_traveled_distance())
+        #print(planner.get_fare(path))
+
         
-        print(path)
+
         
-        # for x in path:
-        #     if routeNo
-        #     print (x)
-        
-        #for each in path:
+
             
 
 
-main( 1, 2, 14)   
+main( 1, 0, 3)   
