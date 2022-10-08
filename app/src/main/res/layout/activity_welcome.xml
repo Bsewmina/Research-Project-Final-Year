@@ -79,7 +79,7 @@
         android:text="Where to"
         android:textAlignment="center"
         android:completionThreshold="3"
-        android:popupTheme="#FFFFFF"
+
         android:background="#FFFFFF"
 
         app:layout_constraintBottom_toTopOf="@+id/button2"

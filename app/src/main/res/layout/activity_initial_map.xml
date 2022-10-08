@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangle_16" />
 
-    <com.google.android.material.textfield.TextInputLayout
+ <!--   <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_destination"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
@@ -54,15 +54,16 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sans_bold"
         android:hint="Where to?" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout> -->
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/findbus"
         android:layout_width="124dp"
         android:layout_height="58dp"
         android:layout_marginStart="140dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#262730"
+        android:onClick="btnRetrieveLocation"
         android:text="FIND "
         app:cornerRadius="60px"
         android:textSize="60px"
@@ -93,5 +94,22 @@
         android:textSize="100px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/where_to"
+        android:layout_width="340dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="156dp"
+        android:hint="Where to"
+        android:textAlignment="center"
+        android:completionThreshold="1"
+        android:completionHint="Select a city"
+        android:background="#FFFFFF"
+
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
