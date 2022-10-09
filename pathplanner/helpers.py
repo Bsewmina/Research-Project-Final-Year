@@ -44,7 +44,7 @@ route_8717 = {
 }
 
 map_test = {
-	0: {'pos': (6.911034627182109, 79.84918916006576), 'connections': [1,16], 'name' : 'Kollupitiya','type': 0,'routeNo': 177, 'hValue': 1}, 
+	0: {'pos': (6.911034627182109, 79.84918916006576), 'connections': [1,16], 'name' : 'Kollupitiya','type': 0,'routeNo': 177, 'hValue': 5}, 
 	1: {'pos': (6.911751932322411, 79.86194701315071), 'connections': [0,2], 'name' : 'Viharamahadevi Park', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	2: {'pos': (6.911385550864001, 79.87682791026592), 'connections': [1,3], 'name' : 'House Of Fashion', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	3: {'pos': (6.911031363415147, 79.88498429384545), 'connections': [2,4], 'name' : 'Castle Street', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
@@ -73,18 +73,13 @@ class Map:
 		self.intersections = nx.get_node_attributes(G, "pos")
 		self.routeNo = nx.get_node_attributes(G, "routeNo")
 		self.type = nx.get_node_attributes(G, "type")
+		self.name = nx.get_node_attributes(G, "name")
 		self.roads = [list(G[node]) for node in G.nodes()]
-		
-		
-
-	def save(self, filename):
-		with open(filename, 'wb') as f:
-			pickle.dump(self._graph, f)
 
 def load_map_graph(map_dict):
 	G = nx.Graph()
 	for node in map_dict.keys():
-		G.add_node(node, pos=map_dict[node]['pos'], type=map_dict[node]['type'],routeNo=map_dict[node]['routeNo'])
+		G.add_node(node, pos=map_dict[node]['pos'], type=map_dict[node]['type'],routeNo=map_dict[node]['routeNo'],name=map_dict[node]['name'])
 	for node in map_dict.keys():
 		for con_node in map_dict[node]['connections']:
 			G.add_edge(node, con_node)
@@ -93,22 +88,11 @@ def load_map_graph(map_dict):
 	
 
 def load_map_b(map_dict):
-	# G = nx.Graph()
-	# for node in map_dict.keys():
-	# 	#nodeValue = 
-	# 	if map_dict[node]['type'] != 1:
-	# 		continue
-	# 	else:
-	# 		G.add_node(node, pos=map_dict[node]['pos'], type=map_dict[node]['type'],routeNo=map_dict[node]['routeNo'])
+	
 	G = nx.Graph()
 	for node in map_dict.keys():
 		G.add_node(node, pos=map_dict[node]['pos'], type=map_dict[node]['type'],routeNo=map_dict[node]['routeNo'])	
-	# for node in map_dict.keys():
-	# 	for con_node in map_dict[node]['connections']:
-	# 		if map_dict[con_node]['type'] != 1:
-	# 			continue
-	# 		else:
-	# 			G.add_edge(node, con_node)
+
 	for node in map_dict.keys():
 		for con_node in map_dict[node]['connections']:
 			if map_dict[node]['type'] != 1:

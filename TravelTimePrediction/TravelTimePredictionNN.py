@@ -196,6 +196,9 @@ weather =testingWeather.weather(city)  #Get weather in travel area
 Distance =14.7 #Distance data come from seminas ----- data come from the Seminas data/member of route planning
 
 
+#- ToDO 
+#   callTimePrediction arguments should be dis, stops, hour, day
+
 # Get Prediction USing this Method after Seminas Calling
 def CallTimePrediction(distance,BuStops,TodayDate):
         FnewDate = GetDateCode(TodayDate)
@@ -203,7 +206,7 @@ def CallTimePrediction(distance,BuStops,TodayDate):
 
 
 
-CallTimePrediction(14.7,8,'Sunday')
+
 
 
 # Get Train Data
