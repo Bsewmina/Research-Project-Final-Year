@@ -1,5 +1,6 @@
 {
-    "python.analysis.extraPaths": [
-        "./TravelTimePrediction/TrainData"
-    ]
+  "python.analysis.extraPaths": [
+    "./TravelTimePrediction/TrainData",
+    "./TravelTimePrediction"
+  ]
 }
