@@ -200,9 +200,9 @@ Distance =14.7 #Distance data come from seminas ----- data come from the Seminas
 #   callTimePrediction arguments should be dis, stops, hour, day
 
 # Get Prediction USing this Method after Seminas Calling
-def CallTimePrediction(distance,BuStops,TodayDate):
+def CallTimePrediction(distance,BuStops,hours,TodayDate):
         FnewDate = GetDateCode(TodayDate)
-        GetPrediction(time,FnewDate,special,Congestion,drivingspeedAVG,BuStops,weather,distance)
+        GetPrediction(hours,FnewDate,special,Congestion,drivingspeedAVG,BuStops,weather,distance)
 
 
 
