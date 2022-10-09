@@ -217,7 +217,7 @@ class PathPlanner():
         #traveled_distance 
         lastNode = self.start
         for n in self.path[1:]:
-            self.range = self.range+ distance(lastNode, n )
+            self.range +=  distance(lastNode, n )
             lastNode = n   
         return self.range
 
@@ -260,13 +260,35 @@ def main( val, start, destination):
     path = planner.path
     
     if path == False:
-        print("No path Found", path)
+        print("No path Found ")
         return False
     else: 
-        print(path)
-        print('distance = ' , planner.get_traveled_distance()/10)
+        print('path = ' ,path)
+        dist = planner.get_traveled_distance()/10
+        print('distance = ' , dist)
         fare = planner.get_fare(path)
         print('trip RS.' , fare)     
 
 
-main( 1, 1, 18)   
+    ####--------------- calling functions of travelTimePredictions (Shiwantha) ---------------
+    
+    from datetime import datetime
+    # get current datetime
+    dateTime = datetime.now()
+    
+    import sys 
+    #adding Folder_2/subfolder to the system path
+    sys.path.insert(0, 'TravelTimePrediction')
+    #importing the hello
+    from TravelTimePredictionNN import CallTimePrediction
+
+    #dis, stops, hour, day
+    CallTimePrediction(dist,len(path),(dateTime.hour),(dateTime.strftime('%A')))
+
+
+main( 1, 8, 18)  
+
+
+
+# from test import test
+# test(map)
