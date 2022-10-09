@@ -14,17 +14,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Travelle"
-        android:screenOrientation="sensorPortrait"
         tools:targetApi="31">
-        <activity
-            android:name=".InitialMap"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -38,8 +32,19 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD7LBGU3enFRU4u2is65UDT5jRGeIcx4_Q" />
+            android:value="YOUR_API_KEY" />
 
+        <activity
+            android:name=".RetrieveBusMap"
+            android:exported="false"
+            android:label="@string/title_activity_retrieve_bus_map" />
+        <activity
+            android:name=".InitialMap"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".HomeMap"
             android:exported="false"

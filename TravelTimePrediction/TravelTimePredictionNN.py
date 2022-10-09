@@ -2,7 +2,7 @@
 import pandas as pd
 
 # %%
-data = pd.read_csv('BusTravelData.csv')
+data = pd.read_csv('TravelTimePrediction\BusTravelData.csv')
 
 
 # %%
@@ -180,6 +180,8 @@ def GetDateCode(date):
     
 import testingWeather
 
+
+
 city = "malabe"
 city = city+" weather"
  
@@ -187,16 +189,37 @@ time= 6  #this time come from semins data/member of route planning
 day ='Friday'  #date come from UI 
 date = GetDateCode(day)
 special = 0 # Special Day or Not 1/0
-Congestion= 8 # This is depend on the depature time---- heavy traffic =9 / No Traffic = 0 
+Congestion= 8 # This is come from TomTOm API / APK app 
 drivingspeedAVG = 40 #this is come from GPS data
 stops =14 #total Bus stops/holts between the travel --- data come from the Seminas data/member of route planning 
 weather =testingWeather.weather(city)  #Get weather in travel area
 Distance =14.7 #Distance data come from seminas ----- data come from the Seminas data/member of route planning
 
 
-GetPrediction(time,date,special,Congestion,drivingspeedAVG,stops,weather,Distance)
+#- ToDO 
+#   callTimePrediction arguments should be dis, stops, hour, day
+
+# Get Prediction USing this Method after Seminas Calling
+def CallTimePrediction(distance,BuStops,TodayDate):
+        FnewDate = GetDateCode(TodayDate)
+        GetPrediction(time,FnewDate,special,Congestion,drivingspeedAVG,BuStops,weather,distance)
 
 
+
+
+
+
+# Get Train Data
+
+# import sys
+ 
+# adding Folder_2/subfolder to the system path
+# sys.path.insert(0, 'TravelTimePrediction\TrainData')
+ 
+# importing the hello
+# from TrainTimePrediction import GetPrediction
+
+# GetPrediction('Dehiwala','Fort')
 
 
 

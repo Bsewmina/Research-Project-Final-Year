@@ -6,13 +6,17 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -28,10 +32,18 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import android.view.View;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class InitialMap extends AppCompatActivity {
 
-    //Initialize variable
+    private static final String[] CITIES = new String[]{
+            "Viharamahadevi Park","House Of Fashion","Castle Street","Rajagiriya","HSBC Rajagiriya","Ethulkotte New","Parliament Junction","Battaramulla Junction","Ganahena","Koswatta","Kotte-Bope"
+            ,"Thalahena Junction","Malabe","Fort_TR","Kompannavidiya_TR","Kollupitiya_TR","Bambalapitiya_TR","Wellawatte_TR","Dehiwala_TR"
+    };
+        //Initialize variable
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
     GoogleMap map;
@@ -43,6 +55,12 @@ public class InitialMap extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_initial_map);
+
+        //Where to declaration
+        AutoCompleteTextView editText = findViewById(R.id.where_to);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, CITIES);
+
+        editText.setAdapter(adapter);
 
 
         //Assign variable
@@ -65,6 +83,12 @@ public class InitialMap extends AppCompatActivity {
             ActivityCompat.requestPermissions(InitialMap.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
         }
+    }
+
+    public void btnRetrieveLocation(View view) {
+
+        startActivity(new Intent(getApplicationContext(),RetrieveBusMap.class));
+
     }
 
     private void getCurrentLocation() {
