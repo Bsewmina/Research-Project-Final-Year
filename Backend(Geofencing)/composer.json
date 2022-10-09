@@ -1,0 +1,6 @@
+{
+    "require": {
+        "kreait/firebase-php": "*",
+        "mjaschen/phpgeo": "^4.2"
+    }
+}
