@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Welcome">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="508dp"
-        android:layout_height="297dp"
-        android:layout_marginStart="-60dp"
-        android:layout_marginBottom="-40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rectangle_16" />
-<!--
+    <!--
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_destination"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -47,16 +38,27 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 -->
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="508dp"
+        android:layout_height="297dp"
+        android:layout_marginStart="-60dp"
+        android:layout_marginTop="572dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_16" />
+
     <Button
         android:id="@+id/button2"
-        android:layout_width="124dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="140dp"
+        android:layout_width="165dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="120dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#262730"
         android:text="FIND "
-        app:cornerRadius="60px"
         android:textSize="60px"
+        app:cornerRadius="60px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,12 +77,12 @@
         android:layout_width="340dp"
         android:layout_height="59dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="156dp"
-        android:text="Where to"
-        android:textAlignment="center"
-        android:completionThreshold="3"
-        android:popupTheme="#FFFFFF"
+        android:layout_marginBottom="12dp"
         android:background="#FFFFFF"
+        android:completionThreshold="3"
+        android:text="Where to"
+
+        android:textAlignment="center"
 
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent" />
