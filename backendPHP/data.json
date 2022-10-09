@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "travelle-99619",
+  "private_key_id": "3a9560631ba0e21b98ba0088c3cc9ffc8bc0f4d1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDlCn+rVnKX9dcl\ntmfoIw6RwxxzAVTYS0SOvIE2QFK84XZqzr+88RRJXvppJMEdBC7jq7rbnhkJ07SH\nUyxGmMT5gNeFi/r7ncMM07PG7jFcZ5d1t0CiZESeiubXSu+i9cAaAcmVe+ER21ie\naps1VYycmxPX855uEoWQ9Xy3cMSJdHMNGxJ8+IAlbCjJXD82nwW8IfSYAhWmJrv8\nRsYcJksZNVeYwnZuCGD+mR+LMMDaiqeAmDIO/4JKiDv8ZSQCdbQnav/aDkXGkv+x\nmL+qcME+ANTieMdxNGIbjc+6mcqd3w0UzO5OkCeK9ny9Lqnf9HohL0B6zl2FA4SN\nMsUoHhHrAgMBAAECggEABCMMzA9JgAdDN4E33nXKToWS7urXS2tGZAHVETAsyteT\ndJYUoCqiyRyyq4Nk0xn0oU0ZtTE6yG9EaqX7GluNesv65svGLwbvZSBqbunneDm+\n/t56pDfMopoCAGGa1smeUbLS5lawooNvAJwrGyseIFY6SLGlnMDMHLDG3Z/Kv6UE\n5EVQLeK1WbWsHEpGb/ItIdU+rLtf5gFZgMhvdECA8DisbyM6Z3pyNNcHS6NUbTBi\nn5NZsew0XhlCAM2b629XrFH/WFyeVK55+4kdx6z/1SChHf9o6QiGbuOpXxk+ZYRp\nZ0cxT73wypB693vOzJg9HyGMHH76723Az6XEBUKHmQKBgQD3P0rRf/FRuE6LXhxi\nwyztfH7PL1XvKUq3c1n/ZMNYm8VjnRBCysbchIV6Lob6D3HDLEqCYSNMQ9zzf0ue\nTKzvtHYufpaYLEoqtuRvcmP+sRePbZf33Ex24MMwrhPFL0t7pNg6eSDCj+uNTk0D\nS5tSRbXAPc/xPnuERxJFxvsfSQKBgQDtJjXZnivV6y6w2uRX0ckc/hAbYatOHVYA\noy25ptnpt/MJiubdnWzQpiseH4EwQWZhTdVJhJ98Ql4gPOFULOooQdCX5ZLl7GMx\nazbADMWnhpNcRO7jW73HMRAheUTUbVUSdad2unq6sYBTUfl2h3vzsWwWiM/Iwudx\nbVOk9+NDkwKBgC066d/7bNULR2sdc0np9I0ZakVSnoDa5+05b+xVrZrHHEwFzpS5\nbbmnkJdybYTPUHto3dSOGpv4CjKNRfMWichsFfaZd8ksyQCZZp6wqXRNR0cYwGU6\nas6QfYSpQ7qd1UwwMtI3mHOfSnMWMOZ6bVaWpBIf/KtgR85CBii3pvbpAoGBAIX/\nrDfdtvk13XkTBilVIaVfLWy7YFdQHjNYANNBIyp7xTkkIlUgycaPzhdER/QjUB01\nJIpZBODqg1MF83BjvJ+oqJvbnYiLbHUVFqenz9tcIFHnpXAUe4RdBbdUVX8OlB5N\nGqXsssJg35i03heKcJB/NQr6nSXcc3hVBQlXBDQ/AoGBAI106tgPgzDt+QAQQ2hg\n4jRtI2Y4At1gWVscKT2dXkVzREgJE8AqiskZ1/GIwZGHj8JTdiqpYo7+E3Sp1for\nZ9o3qxez1hCekfOpQIPvY2zJ4qHmzClzQaztBxpFnjks5v4YRQbJUbCO3RVlRCXe\ntzp0UducHNnTENFdWMwtpgEu\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ocqwx@travelle-99619.iam.gserviceaccount.com",
+  "client_id": "107732711812395465173",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ocqwx%40travelle-99619.iam.gserviceaccount.com"
+}
