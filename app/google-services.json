@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "764544025792",
+    "firebase_url": "https://gps-b123c-default-rtdb.firebaseio.com",
+    "project_id": "gps-b123c",
+    "storage_bucket": "gps-b123c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764544025792:android:af682706740c3b93dd1925",
+        "android_client_info": {
+          "package_name": "com.app.travelle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764544025792-4d40sjiq3sj6rdag8v3gdobdf1ee2kb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQdPBb4ktGFcpFqC9Fi1oDUiA0DaeIgaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764544025792-4d40sjiq3sj6rdag8v3gdobdf1ee2kb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
