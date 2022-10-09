@@ -286,7 +286,7 @@ def main( val, start, destination):
     CallTimePrediction(dist,len(path),(dateTime.hour),(dateTime.strftime('%A')))
 
 
-main( 1, 8, 18)  
+main( 1, 0, 8)  
 
 
 
