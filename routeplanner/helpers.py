@@ -1,9 +1,7 @@
 
 import networkx as nx
-import pickle
 from chart_studio import plotly as py
 import random
-from plotly.graph_objs import *
 #init_notebook_mode(connected=True)
 
 
