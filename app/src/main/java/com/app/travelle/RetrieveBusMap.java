@@ -1,22 +1,30 @@
 package com.app.travelle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.app.travelle.databinding.ActivityRetrieveBusMapBinding;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +37,7 @@ public class RetrieveBusMap extends FragmentActivity implements OnMapReadyCallba
 
     private GoogleMap mMap;
     private ActivityRetrieveBusMapBinding binding;
+    Marker  mm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,17 +97,32 @@ public class RetrieveBusMap extends FragmentActivity implements OnMapReadyCallba
                 System.out.println(latitude+longitude);
                 LatLng location = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
 
-               mMap.addMarker(new MarkerOptions().position(location).title("117"));
-               mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,17));
+
+
+                if(mm != null){
+
+                    mm.remove();
+                }
+
+                mm = mMap.addMarker(new MarkerOptions()
+                        .position(location)
+                        .title("117")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon))
+
+                );
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,17));
+                mMap.getUiSettings().setMapToolbarEnabled(false);
+
 
 
             }
-
+         
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
 
     }
 }
