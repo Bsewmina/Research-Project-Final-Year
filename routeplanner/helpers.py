@@ -1,13 +1,13 @@
 
 import networkx as nx
-import pickle
 from chart_studio import plotly as py
 import random
-from plotly.graph_objs import *
 #init_notebook_mode(connected=True)
 
 
 route_177 = { 
+	
+	0:0,
 	1: 34, 
 	2: 42, 
 	3: 54, 
@@ -26,12 +26,16 @@ route_177 = {
 }
 
 route_176 = { 
+
+	0:0,
 	1: 34, 
 	2: 42, 
 	3: 54, 
 }
 
 route_8717 = {  
+
+	0:0,
 	1: 20, 
 	2: 20, 
 	3: 20, 
@@ -40,7 +44,7 @@ route_8717 = {
 }
 
 map_test = {
-	0: {'pos': (6.911034627182109, 79.84918916006576), 'connections': [1], 'name' : 'Kollupitiya','type': 0,'routeNo': 177, 'hValue': 1}, 
+	0: {'pos': (6.911034627182109, 79.84918916006576), 'connections': [1,16], 'name' : 'Kollupitiya','type': 0,'routeNo': 177, 'hValue': 1}, 
 	1: {'pos': (6.911751932322411, 79.86194701315071), 'connections': [0,2], 'name' : 'Viharamahadevi Park', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	2: {'pos': (6.911385550864001, 79.87682791026592), 'connections': [1,3], 'name' : 'House Of Fashion', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	3: {'pos': (6.911031363415147, 79.88498429384545), 'connections': [2,4], 'name' : 'Castle Street', 'type': 0, 'routeNo': 177, 'hValue': 1}, 

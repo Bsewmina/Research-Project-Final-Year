@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from tokenize import ContStr
 from turtle import distance
 from helpers import load_map_test, load_map_bus, load_map_train,route_177,route_176,route_8717
@@ -14,6 +15,7 @@ class PathPlanner():
         self.type = type
         self.range = 0
         self.cost = 0
+        self.allRoutes = [177,176,8717]
         self.closedSet = self.create_closedSet() if goal != None and start != None else None
         self.openSet = self.create_openSet() if goal != None and start != None else None
         self.cameFrom = self.create_cameFrom() if goal != None and start != None else None
@@ -78,7 +80,6 @@ class PathPlanner():
                 self.record_best_path_to(current, neighbor)
                 #self.range += self.dis
 
-        print("No Path Found")
         self.path = None
         return False
 
@@ -218,32 +219,23 @@ class PathPlanner():
         for n in self.path[1:]:
             self.range = self.range+ distance(lastNode, n )
             lastNode = n   
-
         return self.range
 
     def get_fare(self,path):
         
-        currentRouteNo = self.map.routeNo[self.start]
+        routeNumbers = []
+        for each in path:
+            routeNumbers.append(self.map.routeNo[each])
+            #routeNumbers
 
-        temp = 0
-        for x in path:
-            if self.map.routeNo[x] == currentRouteNo:
-                #print('path is(x) =' + str(x)+ ' ,temp =' + str(temp))
-                temp+=1 
-                currentRouteNo = self.map.routeNo[x]
-            else :
-                print("eeeeeeeeeeeeeeeeeeee")
-                self.func(currentRouteNo, temp)
-                currentRouteNo = self.map.routeNo[x]
-                temp = 0
+        for n in self.allRoutes:
+            val = routeNumbers.count(n)
+            if val >= 0:
+                self.funcc(n, val)
         
-        print('cost = ', self.cost)
-                
-        #cost = cost + route_177.get(temp)
         return self.cost
 
-    def func(self, no, nodes):
-        print('fuction')
+    def funcc(self, no, nodes):
         if(no == 177):
             self.cost = self.cost + route_177.get(nodes)
         elif(no == 176):
@@ -254,35 +246,27 @@ class PathPlanner():
             pass
 
 
-
 # Get route  
-def main( a, start, destination):
-    if a == 3:
+def main( val, start, destination):
+    if val == 3:
         map = load_map_train()
-    elif a == 2:
+    elif val == 2:
         map = load_map_bus()
     else:
         map = load_map_test()
     
     planner = PathPlanner(map,start,destination)
-    print(map.roads)
-
+    #print(map.roads)
     path = planner.path
     
-    print("Genarated path")
     if path == False:
         print("No path Found", path)
-        return
+        return False
     else: 
         print(path)
-        print('distance =' , planner.get_traveled_distance())
-        print(planner.get_fare(path))
-
-        
-
-        
-
-            
+        print('distance = ' , planner.get_traveled_distance()/10)
+        fare = planner.get_fare(path)
+        print('trip RS.' , fare)     
 
 
-main( 1, 0, 3)   
+main( 1, 1, 18)   
