@@ -116,7 +116,7 @@ public class RetrieveBusMap extends FragmentActivity implements OnMapReadyCallba
 
 
             }
-         
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

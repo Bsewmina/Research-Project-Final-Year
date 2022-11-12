@@ -43,7 +43,7 @@ public class InitialMap extends AppCompatActivity {
             "Viharamahadevi Park","House Of Fashion","Castle Street","Rajagiriya","HSBC Rajagiriya","Ethulkotte New","Parliament Junction","Battaramulla Junction","Ganahena","Koswatta","Kotte-Bope"
             ,"Thalahena Junction","Malabe","Fort_TR","Kompannavidiya_TR","Kollupitiya_TR","Bambalapitiya_TR","Wellawatte_TR","Dehiwala_TR"
     };
-        //Initialize variable
+    //Initialize variable
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient client;
     GoogleMap map;

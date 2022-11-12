@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     private Button login_btn;
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity {
         });
     }
     public void openWelcome(){
+        Toast.makeText(this, "This is from login", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InitialMap.class);
         startActivity(intent);
     }

@@ -72,6 +72,7 @@
 
 
 
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="539dp"
@@ -94,6 +95,22 @@
         android:textSize="100px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/current_location"
+        android:layout_width="340dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="30dp"
+        android:hint="Where to"
+        android:fontFamily="@font/sans_bold"
+        android:textColorHint="@drawable/selector"
+        android:textAlignment="center"
+        android:completionThreshold="1"
+        android:completionHint="Select a city"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toTopOf="@+id/where_to"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <AutoCompleteTextView
         android:id="@+id/where_to"
