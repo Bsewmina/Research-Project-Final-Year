@@ -2,8 +2,10 @@
 import pandas as pd
 
 # %%
-data = pd.read_csv('TravelTimePrediction\BusTravelData.csv')
-
+#data = pd.read_csv('../TravelTimePrediction\BusTravelData.csv')
+from os.path import dirname, join
+filename = join(dirname(__file__), "BusTravelData.csv")
+data = pd.read_csv(filename)
 
 # %%
 data['Day'].unique()
@@ -35,6 +37,8 @@ X = data.drop(['Date','Travel Time'],axis=1)
 
 # %%
 y = data['Travel Time']
+
+print("Python printing")
 
 
 # %% [markdown]

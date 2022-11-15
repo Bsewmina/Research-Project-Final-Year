@@ -13,48 +13,48 @@
         android:id="@+id/maps_section"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
+    <!--   <com.google.android.material.textfield.TextInputLayout
+           android:id="@+id/search_destination"
+           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+           android:layout_width="340dp"
+           android:layout_height="70dp"
+           android:layout_marginStart="30dp"
+           android:layout_marginTop="260dp"
+
+           app:boxBackgroundColor="#FFFFFF"
+           app:boxCornerRadiusBottomEnd="60px"
+           app:boxCornerRadiusBottomStart="60px"
+           app:boxCornerRadiusTopEnd="60px"
+           app:boxCornerRadiusTopStart="60px"
+           app:boxStrokeColor="#FFFFFF"
+           app:endIconMode="clear_text"
+           app:startIconTint="@color/white"
+           app:endIconTint="#FFFFFF"
+           android:shadowColor="#000000"
+           android:shadowDx="1.2"
+           android:shadowDy="1.2"
+           android:shadowRadius="1.5"
+
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent">
+
+       <com.google.android.material.textfield.TextInputEditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:fontFamily="@font/sans_bold"
+           android:hint="Where to?" />
+       </com.google.android.material.textfield.TextInputLayout> -->
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="508dp"
         android:layout_height="297dp"
         android:layout_marginStart="-60dp"
-        android:layout_marginTop="572dp"
+        android:layout_marginTop="520dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rectangle_16" />
-
- <!--   <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_destination"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="340dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="260dp"
-
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxCornerRadiusBottomEnd="60px"
-        app:boxCornerRadiusBottomStart="60px"
-        app:boxCornerRadiusTopEnd="60px"
-        app:boxCornerRadiusTopStart="60px"
-        app:boxStrokeColor="#FFFFFF"
-        app:endIconMode="clear_text"
-        app:startIconTint="@color/white"
-        app:endIconTint="#FFFFFF"
-        android:shadowColor="#000000"
-        android:shadowDx="1.2"
-        android:shadowDy="1.2"
-        android:shadowRadius="1.5"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sans_bold"
-        android:hint="Where to?" />
-    </com.google.android.material.textfield.TextInputLayout> -->
 
     <Button
         android:id="@+id/findbus"
@@ -63,12 +63,12 @@
         android:layout_marginStart="140dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#262730"
-        android:onClick="btnRetrieveLocation"
         android:text="FIND "
         app:cornerRadius="60px"
         android:textSize="60px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
 
@@ -95,12 +95,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/current_location"
+        android:layout_width="340dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/sans_italic"
+        android:textSize="19dp"
+        android:gravity="center"
+        android:textColorHint="@drawable/selector"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toTopOf="@+id/where_to"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <AutoCompleteTextView
         android:id="@+id/where_to"
         android:layout_width="340dp"
         android:layout_height="59dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:hint="Where to"
         android:fontFamily="@font/sans_bold"
         android:textColorHint="@drawable/selector"
@@ -108,9 +123,9 @@
         android:completionThreshold="1"
         android:completionHint="Select a city"
         android:background="@drawable/rounded_corner"
+
         app:layout_constraintBottom_toTopOf="@+id/findbus"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

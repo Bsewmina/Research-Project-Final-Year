@@ -11,6 +11,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
 public class MainActivity extends AppCompatActivity {
     private Button button;
 
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
                openLogin();
             }
         });
+        if (! Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+
     }
     public void openLogin(){
         Intent intent = new Intent(this, Login.class);

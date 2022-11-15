@@ -12,4 +12,6 @@
     <string name="title_activity_homemap">homemap</string>
     <string name="title_activity_home_map">HomeMap</string>
     <string name="title_activity_retrieve_bus_map">RetrieveBusMap</string>
+    <string name="title_activity_route">RouteActivity</string>
+    <string name="google_maps_key">AIzaSyA6byk50XLU3_WXUpsy7HGfpKbbrjwVlj8</string>
 </resources>

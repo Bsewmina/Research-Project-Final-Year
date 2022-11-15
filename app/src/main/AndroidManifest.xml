@@ -18,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Travelle"
         tools:targetApi="31">
-
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -31,8 +30,12 @@
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
         <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".RetrieveBusMap"
@@ -78,6 +81,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RouteActivity"
+            android:exported="false">
+
+
 
             <meta-data
                 android:name="android.app.lib_name"
