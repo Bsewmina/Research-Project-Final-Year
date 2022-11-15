@@ -25,8 +25,15 @@ android {
 
         python{
             pip{
+                install "numpy"
+                install "pandas"
+                install "matplotlib"
+                install "sklearn"
+                install "matplotlib"
+                install "scikit-learn"
                 install "networkx"
                 install "asyncio"
+
 
 
 
@@ -44,7 +51,7 @@ android {
             buildPython "C:/Users/Chamod Abeyrathna/AppData/Local/Programs/Python/Python39/python.exe"
         }
         python {
-            version "3.9"
+            version "3.8"
         }
         sourceSets {
             main {

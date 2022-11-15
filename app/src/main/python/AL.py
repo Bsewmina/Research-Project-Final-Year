@@ -1,9 +1,9 @@
 #from asyncio.windows_events import NULL
 from cmath import inf
 from tokenize import ContStr
-#from turtle import distance
 from helpers import load_map_test, load_map_bus, load_map_train,route_177,route_176,route_8717
 from math import radians, cos, sin, asin, sqrt
+import json
 
 class PathPlanner():
    
@@ -212,14 +212,14 @@ class PathPlanner():
         #self.dis = dist
         return dist
 
-    def get_traveled_distance(self):
+    # def get_traveled_distance(self):
 
-        #traveled_distance 
-        lastNode = self.start
-        for n in self.path[1:]:
-            self.range +=  distance(lastNode, n )
-            lastNode = n   
-        return self.range
+    #     #traveled_distance 
+    #     lastNode = self.start
+    #     for n in self.path[1:]:
+    #         self.range = range + distance(self,lastNode, n)
+    #         lastNode = n   
+    #     return self.range
 
     def get_fare(self,path):
         
@@ -247,7 +247,7 @@ class PathPlanner():
 
 
 # Get route  
-def main( val, start, destination):
+def get_route( val, start, destination):
     if val == 3:
         map = load_map_train()
     elif val == 2:
@@ -258,11 +258,43 @@ def main( val, start, destination):
     planner = PathPlanner(map,start,destination)
     #print(map.roads)
     path = planner.path
+    print(type(path))
     if path == False:
+        print("No path Found ")
         return False
     else: 
+        # print('path = ' ,path)
+        #dist = planner.get_traveled_distance()/10
+        dist =10
+        # print('distance = ' , dist)
+        fare = planner.get_fare(path)
+        # print('trip RS.' , fare)     
+        # return path
 
-        return path
+        #data = dict()
+        data = []
+        data.append(fare)
+
+        for each in path:
+            data.append(map.intersections[each])
+
+        #print(type(data))
+        return data
+        # for each in path:
+        #     data[each] = list()
+
+            #raw = {map.intersections[each],map.name[each],map.routeNo[each],map.type[each]}
+
+
+# jsonData=json.dumps(data)
+#
+#             data[each].extend(raw)
+#
+#             route = json.dumps(data)
+#
+#
+#         return route,dist,fare
+
 
 #>>>>>>>>>>>>>>>>>>>>>
 
@@ -297,7 +329,7 @@ def test1(typ,start,stop1,stop2,stop3):
             raise ValueError("No path found for planner")
 
         path1.extend(path2)
-
+        print(path1)
     else:
         planner2 = PathPlanner(map,stop1,stop2)
         path2 = planner2.path
@@ -311,33 +343,33 @@ def test1(typ,start,stop1,stop2,stop3):
 
         path1.extend(path2 + path3)  
 
-
+        print (path1)
 
 def get_nearest_station(lon,lat):
 
     
     map = load_map_test()
-    tempDist = float(inf)
+    tempDist = float('inf')
     nearestStation = None
 
     lon1 = radians(lon)
     lat1 = radians(lat)
 
     for node in map.intersections.keys():
-
+        
         lon2 = radians(map.intersections [node][0])
         lat2 = radians(map.intersections [node][1])
-
+        
         # Haversine formula
         dlon = lon2 - lon1
         dlat = lat2 - lat1
         a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-
+    
         c = 2 * asin(sqrt(a))
-
+        
         # Radius of earth in kilometers
         r = 6371
-
+        
         # calculate the result
         dist = (c * r)
 
@@ -345,11 +377,10 @@ def get_nearest_station(lon,lat):
             tempDist = dist
             nearestStation = map.name[node]
 
-
     return nearestStation
 #<<<<<<<<<<<<<<<<<
 
-#main( 1, 14, 15)
+#print(get_route( 1, 14, 15)  )
 
 #>>>>>>>>>>>>>>
 #test1(1,2,3,14,18)

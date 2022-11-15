@@ -38,13 +38,7 @@ public class MainActivity extends AppCompatActivity {
         if (! Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
         }
-        Python py = Python.getInstance();
-        PyObject pyobj = py.getModule("AL");
-        //PyObject obj = pyobj.callAttr("get_nearest_station",6.902641300889514, 79.89708871696563);
-        PyObject obj = pyobj.callAttr("main",1,2,6);
 
-
-        System.out.println(obj.toString());
     }
     public void openLogin(){
         Intent intent = new Intent(this, Login.class);

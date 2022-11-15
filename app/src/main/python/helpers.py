@@ -51,7 +51,7 @@ map_test = {
 	4: {'pos': (6.908462881966912, 79.89338919261249), 'connections': [3,5], 'name' : 'Rajagiriya', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	5: {'pos': (6.906663916178293, 79.90205413217801), 'connections': [4,6], 'name' : 'HSBC Rajagiriya', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	6: {'pos': (6.90333333857459, 79.90747047529919), 'connections': [5,7], 'name' : 'Ethulkotte New', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
-	7: {'pos': (6.903185701293392, 79.91168232658337), 'connections': [6,8], 'name' : 'Parliament Junction', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
+	7: {'pos': (6.903185701293392, 79.91168232658337), 'connections': [6,8], 'name' : 'Parliaent Junction', 'type': 0, 'routeNo': 177, 'hValue': 1},
 	8: {'pos': (6.902102452411621, 79.91741047710077), 'connections': [7,9], 'name' : 'Battaramulla Junction', 'type': 0, 'routeNo': 177, 'hValue': 1}, 
 	9: {'pos': (6.90431022366131, 79.92400480782847), 'connections': [8,10], 'name' : 'Ganahena', 'type': 0, 'routeNo': 177, 'hValue': 1},
 	10: {'pos': (6.906173952520986, 79.92862087153598), 'connections': [9,11], 'name' : 'Koswatta', 'type': 0, 'routeNo': 177, 'hValue': 1},

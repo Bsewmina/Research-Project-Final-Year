@@ -2,6 +2,7 @@ package com.app.travelle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class Login extends AppCompatActivity {
     private Button login_btn;
     private Button direct_to_signup_btn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,8 @@ public class Login extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
+
+
 
         login_btn = (Button) findViewById(R.id.login);
         direct_to_signup_btn = (Button) findViewById(R.id.signup);
@@ -38,7 +42,6 @@ public class Login extends AppCompatActivity {
         });
     }
     public void openWelcome(){
-        Toast.makeText(this, "This is from login", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, InitialMap.class);
         startActivity(intent);
     }
